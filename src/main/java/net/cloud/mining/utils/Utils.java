@@ -87,7 +87,6 @@ public class Utils {
 
         sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Player-Message", new CloudPlaceholder().addPlaceholder("%player%", player.getName()));
         broadcastMessage(FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Broadcast-Message", new CloudPlaceholder().addPlaceholder("%player%", player.getName()));
-        playParticle(block.getLocation(), FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), ore.getPath() + "Particle-Settings.Block-Break");
     }
 
     public void playParticle(Location location, FileConfiguration config, String path) {

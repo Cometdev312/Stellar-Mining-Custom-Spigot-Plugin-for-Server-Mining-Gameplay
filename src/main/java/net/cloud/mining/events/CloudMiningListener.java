@@ -57,6 +57,7 @@ public class CloudMiningListener implements Listener {
                 if (triggerEvent.isCancelled()) return;
 
                 CloudMining.getCore().getUtils().breakBlock(player, block, ore);
+                CloudMining.getCore().getUtils().playParticle(block.getLocation(), FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), ore.getPath() + "Particle-Settings.Block-Break");
             } else {
                 CloudMining.getCore().getUtils().sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "CANNOT-BREAK-PERMISSION", null);
             }
@@ -66,6 +67,7 @@ public class CloudMiningListener implements Listener {
             if (triggerEvent.isCancelled()) return;
 
             CloudMining.getCore().getUtils().breakBlock(player, block, ore);
+            CloudMining.getCore().getUtils().playParticle(block.getLocation(), FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), ore.getPath() + "Particle-Settings.Block-Break");
         }
     }
 }
