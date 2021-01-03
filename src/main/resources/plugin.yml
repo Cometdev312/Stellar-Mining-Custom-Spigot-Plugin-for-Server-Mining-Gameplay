@@ -1,0 +1,7 @@
+name: CloudMining
+version: ${project.version}
+main: net.cloud.mining.CloudMining
+api-version: 1.16
+authors: [ Cloud, Chubbyduck1 ]
+description: A custom made advanced mining plugin
+softdepend: [ WorldEdit, WorldGuard ]

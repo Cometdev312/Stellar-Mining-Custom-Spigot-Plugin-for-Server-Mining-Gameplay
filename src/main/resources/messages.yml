@@ -1,0 +1,61 @@
+"CANNOT-BREAK":
+    Sound:
+        Enabled: true
+        Value: "ENTITY_BAT_TAKEOFF"
+    Message:
+        Enabled: true
+        Value:
+            - "&4&l[!] &cYou cannot break this block right now."
+"CANNOT-BREAK-PERMISSION":
+    Sound:
+        Enabled: true
+        Value: "ENTITY_BAT_TAKEOFF"
+    Message:
+        Enabled: true
+        Value:
+            - "&4&l[!] &cYou dont have permission to break this block here."
+"BREAK-USAGE":
+    Sound:
+        Enabled: true
+        Value: "ENTITY_BAT_TAKEOFF"
+    Message:
+        Enabled: true
+        Value:
+            - "&4&l[!] &cTo break this block, sneak and break it in gamemode creative while opped."
+"BLOCK-BROKEN":
+    Sound:
+        Enabled: true
+        Value: "ENTITY_PLAYER_LEVELUP"
+    Message:
+        Enabled: true
+        Value:
+            - "&2&l[!] &aYou have successfully broken this block."
+COMMAND-NO-PERMISSION:
+    Sound:
+        Enabled: true
+        Value: "ENTITY_BAT_TAKEOFF"
+    Message:
+        Enabled: true
+        Value:
+            - "&4&l[!] &cYou dont have permission to &nexecute&c this."
+COMMAND-HELP-MESSAGE:
+    Sound:
+        Enabled: true
+        Value: "ENTITY_PLAYER_LEVELUP"
+    Message:
+        Enabled: true
+        Value:
+            - "&6&lCloud &e&lMining &8(&7v1.0&8)"
+            - "&7&oA custom mining plugin by Chubbyduck1"
+            - " "
+            - "&6&lCommands"
+            - " &8» &6/mining &ereload"
+            - " "
+COMMAND-RELOADED:
+    Sound:
+        Enabled: true
+        Value: "ENTITY_PLAYER_LEVELUP"
+    Message:
+        Enabled: true
+        Value:
+            - "&2&l[!] &aYou have &2successfully&a reloaded the configuration files."

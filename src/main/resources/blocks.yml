@@ -1,0 +1,96 @@
+#Valid Particles:
+#  - EXPLODE
+#  - LARGEEXPLODE
+#  - HUGEEXPLOSION
+#  - FIREWORKSSPARK
+#  - BUBBLE
+#  - SPLASH
+#  - WAKE
+#  - SUSPENDED
+#  - DEPTHSUSPEND
+#  - CRIT
+#  - MAGICCRIT
+#  - SMOKE
+#  - LARGESMOKE
+#  - SPELL
+#  - INSTANTSPELL
+#  - MOBSPELL
+#  - MOBSPELLAMBIENT
+#  - WITCHMAGIC
+#  - DRIPWATER
+#  - DRIPLAVA
+#  - ANGRYVILLAGER
+#  - HAPPYVILLAGER
+#  - TOWNAURA
+#  - NOTE
+#  - PORTAL
+#  - ENCHANTMENTTABLE
+#  - FLAME
+#  - LAVA
+#  - FOOTSTEP
+#  - CLOUD
+#  - REDDUST
+#  - SNOWBALLPOOF
+#  - SNOWSHOVEL
+#  - SLIME
+#  - HEART
+#  - BARRIER
+#  - ICONCRACK
+#  - BLOCKCRACK
+#  - BLOCKDUST
+#  - DROPLET
+#  - TAKE
+#  - MOBAPPEARANCE
+
+Blocks:
+    "DIAMOND_ORE":
+        Settings:
+            Enabled: true #Enable Ore
+            Ore-Type: "DIAMOND_ORE" #The ore name
+        Particle-Settings:
+            Block-Break:
+                Enabled: true
+                Value: "lava;1;1;1;1;50"
+        Permission-Settings:
+            Permission-Required: true #Enable / Disable permission
+            Permission-Value: "cloudmining.diamondore" #Permission required to break block
+        Region-Settings:
+            Regions-Required: true #Requires certain regions -- Will work everywhere without
+            Whitelisted-Regions: #Regions that it can be broken in
+                - "warzone"
+        Message-Settings:
+            "No-Permission": #Message sent if player doesnt have permission for the block
+                Sound:
+                    Enabled: true
+                    Value: "ENTITY_BAT_TAKEOFF"
+                Message:
+                    Enabled: true
+                    Value:
+                        - "&4&l[!] &cYou dont have permission to mine this ore."
+        Chance-Settings:
+            Nothing-Chance-Enabled: false #Enables chance to get nothing
+            Nothing-Chance-Value: 99 #Chance to get nothing
+        Reward-Settings: #Rewards for block break
+            "Money": #Reward Name
+                Settings:
+                    Enabled: true #Reward Enabled?
+                    Chance: 1 #Reward Chance
+                Message-Settings:
+                    "Player-Message": #Message only sends to player
+                        Sound:
+                            Enabled: true
+                            Value: "ENTITY_PLAYER_LEVELUP"
+                        Message:
+                            Enabled: true
+                            Value:
+                                - "&6&l[!] &eYou have won the money reward."
+                    "Broadcast-Message": #Message broadcasts to all players
+                        Sound:
+                            Enabled: true
+                            Value: "ENTITY_PLAYER_LEVELUP"
+                        Message:
+                            Enabled: true
+                            Value:
+                                - "&6&l[!] &6%player% &ehas won money from mining!"
+                Commands: #Commands that will be executed if won
+                    - "eco give %player% 10000"
