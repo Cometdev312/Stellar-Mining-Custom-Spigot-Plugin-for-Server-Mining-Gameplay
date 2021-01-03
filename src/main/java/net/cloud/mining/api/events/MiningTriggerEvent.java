@@ -21,6 +21,7 @@ public class MiningTriggerEvent extends Event implements Cancellable {
         this.player = player;
         this.block = block;
         this.ore = ore;
+        cancelled = false;
     }
 
     public Player getPlayer() {

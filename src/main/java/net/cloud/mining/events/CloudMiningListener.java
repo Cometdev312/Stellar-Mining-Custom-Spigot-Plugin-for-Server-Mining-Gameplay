@@ -50,14 +50,22 @@ public class CloudMiningListener implements Listener {
         }
 
         event.setCancelled(true);
-        if(ore.isPermissionsEnabled() && player.hasPermission(ore.getRequiredPermission())) {
+        if(ore.isPermissionsEnabled()) {
+            if(player.hasPermission(ore.getRequiredPermission())) {
+                MiningTriggerEvent triggerEvent = new MiningTriggerEvent(player, block, ore);
+                Bukkit.getPluginManager().callEvent(triggerEvent);
+                if (triggerEvent.isCancelled()) return;
+
+                CloudMining.getCore().getUtils().breakBlock(player, block, ore);
+            } else {
+                CloudMining.getCore().getUtils().sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "CANNOT-BREAK-PERMISSION", null);
+            }
+        } else {
             MiningTriggerEvent triggerEvent = new MiningTriggerEvent(player, block, ore);
             Bukkit.getPluginManager().callEvent(triggerEvent);
+            if (triggerEvent.isCancelled()) return;
 
-            if(triggerEvent.isCancelled()) return;
             CloudMining.getCore().getUtils().breakBlock(player, block, ore);
-        } else {
-            CloudMining.getCore().getUtils().sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "CANNOT-BREAK-PERMISSION", null);
         }
     }
 }
