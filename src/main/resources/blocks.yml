@@ -46,6 +46,7 @@ Blocks:
     "DIAMOND_ORE":
         Settings:
             Enabled: true #Enable Ore
+            Delay: 10 #in ticks
             Ore-Type: "DIAMOND_ORE" #The ore name
         Particle-Settings:
             Block-Break:
