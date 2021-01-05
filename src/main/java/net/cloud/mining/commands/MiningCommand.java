@@ -27,7 +27,7 @@ public class MiningCommand extends CloudCommandBuilder {
             CloudMining.getCore().getUtils().sendMessage(sender, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "COMMAND-HELP-MESSAGE", null);
         } else if(args.length > 0) {
             if(args[0].equalsIgnoreCase("reload")) {
-                FileUtils.getInstance().reload();
+                FileUtils.getInstance().init();
                 CloudMining.getCore().getUtils().sendMessage(sender, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "COMMAND-RELOADED", null);
             } else {
                 CloudMining.getCore().getUtils().sendMessage(sender, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "COMMAND-HELP-MESSAGE", null);
