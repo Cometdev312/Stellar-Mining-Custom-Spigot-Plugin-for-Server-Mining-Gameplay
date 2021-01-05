@@ -3,6 +3,7 @@ package net.cloud.mining.commands;
 import net.cloud.mining.CloudMining;
 import net.cloud.mining.files.FileUtils;
 import net.cloud.mining.files.enums.MiningFileType;
+import net.cloud.mining.storage.OreStorage;
 import net.cloud.mining.support.CloudCommandBuilder;
 import org.bukkit.command.CommandSender;
 
@@ -28,6 +29,8 @@ public class MiningCommand extends CloudCommandBuilder {
         } else if(args.length > 0) {
             if(args[0].equalsIgnoreCase("reload")) {
                 FileUtils.getInstance().init();
+                CloudMining.getCore().getOreStorage().getOres().forEachRemaining(ore -> ore.loadFromFile());
+
                 CloudMining.getCore().getUtils().sendMessage(sender, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "COMMAND-RELOADED", null);
             } else {
                 CloudMining.getCore().getUtils().sendMessage(sender, FileUtils.getInstance().getFileByType(MiningFileType.MESSAGES), "COMMAND-HELP-MESSAGE", null);
