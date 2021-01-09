@@ -1,4 +1,4 @@
-# :cloud: Cloud-Mining
+# :man_astronaut: Stellar-Mining
 A mining plugin for a unique spin on your server
 
 # :money_with_wings: Terms Of Download
