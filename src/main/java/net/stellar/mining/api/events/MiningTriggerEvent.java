@@ -1,6 +1,6 @@
-package net.cloud.mining.api.events;
+package net.stellar.mining.api.events;
 
-import net.cloud.mining.storage.CloudOre;
+import net.stellar.mining.storage.StellarOre;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
@@ -13,11 +13,11 @@ public class MiningTriggerEvent extends Event implements Cancellable {
 
     private Player player;
     private Block block;
-    private CloudOre ore;
+    private StellarOre ore;
 
     private boolean cancelled;
 
-    public MiningTriggerEvent(Player player, Block block, CloudOre ore) {
+    public MiningTriggerEvent(Player player, Block block, StellarOre ore) {
         this.player = player;
         this.block = block;
         this.ore = ore;
@@ -32,7 +32,7 @@ public class MiningTriggerEvent extends Event implements Cancellable {
         return block;
     }
 
-    public CloudOre getOre() {
+    public StellarOre getOre() {
         return ore;
     }
 

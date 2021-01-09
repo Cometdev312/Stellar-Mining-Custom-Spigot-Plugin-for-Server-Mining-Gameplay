@@ -1,7 +1,7 @@
-name: CloudMining
+name: StellarMining
 version: ${project.version}
-main: net.cloud.mining.CloudMining
+main: net.stellar.mining.StellarMining
 api-version: 1.16
-authors: [ Cloud, Chubbyduck1 ]
+authors: [ Stellar, Chubbyduck1 ]
 description: A custom made advanced mining plugin
 softdepend: [ WorldEdit, WorldGuard ]

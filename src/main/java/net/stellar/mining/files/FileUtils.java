@@ -1,4 +1,4 @@
-package net.cloud.mining.files;
+package net.stellar.mining.files;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -7,8 +7,8 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.cloud.mining.CloudMining;
-import net.cloud.mining.files.enums.MiningFileType;
+import net.stellar.mining.StellarMining;
+import net.stellar.mining.files.enums.MiningFileType;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class FileUtils {
@@ -73,7 +73,7 @@ public class FileUtils {
 	}
 
 	public void writeToLogsFile(String name, String line) {
-		String fileName = CloudMining.getCore().getDataFolder() + File.separator + "logs" + File.separator + name + ".txt";
+		String fileName = StellarMining.getCore().getDataFolder() + File.separator + "logs" + File.separator + name + ".txt";
 		PrintWriter printWriter = null;
 		File file = new File(fileName);
 		try {

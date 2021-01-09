@@ -1,18 +1,18 @@
-package net.cloud.mining;
+package net.stellar.mining;
 
-import net.cloud.mining.commands.MiningCommand;
-import net.cloud.mining.events.CloudMiningListener;
-import net.cloud.mining.files.FileUtils;
-import net.cloud.mining.files.enums.MiningFileType;
-import net.cloud.mining.hooks.WorldGuardHook;
-import net.cloud.mining.storage.CloudOre;
-import net.cloud.mining.storage.OreStorage;
-import net.cloud.mining.storage.ReplacedStorage;
-import net.cloud.mining.utils.Utils;
+import net.stellar.mining.commands.MiningCommand;
+import net.stellar.mining.events.StellarMiningListener;
+import net.stellar.mining.files.FileUtils;
+import net.stellar.mining.files.enums.MiningFileType;
+import net.stellar.mining.hooks.WorldGuardHook;
+import net.stellar.mining.storage.StellarOre;
+import net.stellar.mining.storage.OreStorage;
+import net.stellar.mining.storage.ReplacedStorage;
+import net.stellar.mining.utils.Utils;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class CloudMining extends JavaPlugin {
+public final class StellarMining extends JavaPlugin {
 
     @Override
     public void onEnable() {
@@ -43,7 +43,7 @@ public final class CloudMining extends JavaPlugin {
          */
 
         FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS).getConfigurationSection("Blocks").getKeys(false).forEach(block -> {
-            CloudOre ore = new CloudOre(block);
+            StellarOre ore = new StellarOre(block);
             getOreStorage().addOre(ore);
         });
 
@@ -51,7 +51,7 @@ public final class CloudMining extends JavaPlugin {
         Load Events
          */
 
-        getServer().getPluginManager().registerEvents(new CloudMiningListener(), this);
+        getServer().getPluginManager().registerEvents(new StellarMiningListener(), this);
     }
 
     @Override
@@ -101,8 +101,8 @@ public final class CloudMining extends JavaPlugin {
         return worldGuardHook;
     }
 
-    private static CloudMining core;
-    public static CloudMining getCore() {
+    private static StellarMining core;
+    public static StellarMining getCore() {
         return core;
     }
 }

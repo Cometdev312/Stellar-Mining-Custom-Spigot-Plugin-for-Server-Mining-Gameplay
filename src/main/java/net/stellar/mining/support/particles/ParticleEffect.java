@@ -1,5 +1,4 @@
-package net.cloud.mining.support.particles;
-import net.cloud.mining.support.particles.ReflectionUtils.PackageType;
+package net.stellar.mining.support.particles;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -45,7 +44,7 @@ public enum ParticleEffect {
     /**
      * A particle effect which is displayed by exploding tnt and creepers:
      * <ul>
-     * <li>It looks like a white cloud
+     * <li>It looks like a white Stellar
      * <li>The speed value influences the velocity at which the particle flies off
      * </ul>
      */
@@ -133,7 +132,7 @@ public enum ParticleEffect {
     /**
      * A particle effect which is displayed by primed tnt, torches, droppers, dispensers, end portals, brewing stands and monster spawners:
      * <ul>
-     * <li>It looks like a little gray cloud
+     * <li>It looks like a little gray Stellar
      * <li>The speed value influences the velocity at which the particle flies off
      * </ul>
      */
@@ -141,7 +140,7 @@ public enum ParticleEffect {
     /**
      * A particle effect which is displayed by fire, minecarts with furnace and blazes:
      * <ul>
-     * <li>It looks like a large gray cloud
+     * <li>It looks like a large gray Stellar
      * <li>The speed value influences the velocity at which the particle flies off
      * </ul>
      */
@@ -242,7 +241,7 @@ public enum ParticleEffect {
     /**
      * A particle effect which is displayed by nether portals, endermen, ender pearls, eyes of ender, ender chests and dragon eggs:
      * <ul>
-     * <li>It looks like a purple cloud
+     * <li>It looks like a purple Stellar
      * <li>The speed value influences the spread of this particle effect
      * </ul>
      */
@@ -282,15 +281,15 @@ public enum ParticleEffect {
     /**
      * A particle effect which is displayed when a mob dies:
      * <ul>
-     * <li>It looks like a large white cloud
+     * <li>It looks like a large white Stellar
      * <li>The speed value influences the velocity at which the particle flies off
      * </ul>
      */
-    CLOUD("cloud", 29, -1, ParticleProperty.DIRECTIONAL),
+    Stellar("Stellar", 29, -1, ParticleProperty.DIRECTIONAL),
     /**
      * A particle effect which is displayed by redstone ore, powered redstone, redstone torches and redstone repeaters:
      * <ul>
-     * <li>It looks like a tiny colored cloud
+     * <li>It looks like a tiny colored Stellar
      * <li>The speed value causes the particle to be colored red when set to 0
      * </ul>
      */
@@ -306,7 +305,7 @@ public enum ParticleEffect {
     /**
      * A particle effect which is currently unused:
      * <ul>
-     * <li>It looks like a tiny white cloud
+     * <li>It looks like a tiny white Stellar
      * <li>The speed value influences the velocity at which the particle flies off
      * </ul>
      */
@@ -1400,15 +1399,15 @@ public enum ParticleEffect {
                 return;
             }
             try {
-                version = Integer.parseInt(Character.toString(PackageType.getServerVersion().charAt(3)));
+                version = Integer.parseInt(Character.toString(ReflectionUtils.PackageType.getServerVersion().charAt(3)));
                 if (version > 7) {
-                    enumParticle = PackageType.MINECRAFT_SERVER.getClass("EnumParticle");
+                    enumParticle = ReflectionUtils.PackageType.MINECRAFT_SERVER.getClass("EnumParticle");
                 }
-                Class<?> packetClass = PackageType.MINECRAFT_SERVER.getClass(version < 7 ? "Packet63WorldParticles" : "PacketPlayOutWorldParticles");
+                Class<?> packetClass = ReflectionUtils.PackageType.MINECRAFT_SERVER.getClass(version < 7 ? "Packet63WorldParticles" : "PacketPlayOutWorldParticles");
                 packetConstructor = ReflectionUtils.getConstructor(packetClass);
-                getHandle = ReflectionUtils.getMethod("CraftPlayer", PackageType.CRAFTBUKKIT_ENTITY, "getHandle");
-                playerConnection = ReflectionUtils.getField("EntityPlayer", PackageType.MINECRAFT_SERVER, false, "playerConnection");
-                sendPacket = ReflectionUtils.getMethod(playerConnection.getType(), "sendPacket", PackageType.MINECRAFT_SERVER.getClass("Packet"));
+                getHandle = ReflectionUtils.getMethod("CraftPlayer", ReflectionUtils.PackageType.CRAFTBUKKIT_ENTITY, "getHandle");
+                playerConnection = ReflectionUtils.getField("EntityPlayer", ReflectionUtils.PackageType.MINECRAFT_SERVER, false, "playerConnection");
+                sendPacket = ReflectionUtils.getMethod(playerConnection.getType(), "sendPacket", ReflectionUtils.PackageType.MINECRAFT_SERVER.getClass("Packet"));
             } catch (Exception exception) {
                 throw new VersionIncompatibleException("Your current bukkit version seems to be incompatible with this library", exception);
             }

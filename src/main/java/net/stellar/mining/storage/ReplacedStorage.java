@@ -1,6 +1,6 @@
-package net.cloud.mining.storage;
+package net.stellar.mining.storage;
 
-import net.cloud.mining.CloudMining;
+import net.stellar.mining.StellarMining;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 
@@ -9,16 +9,16 @@ import java.util.Map;
 
 public class ReplacedStorage {
 
-    private CloudMining plugin;
+    private StellarMining plugin;
 
-    public ReplacedStorage(CloudMining plugin) {
+    public ReplacedStorage(StellarMining plugin) {
         this.plugin = plugin;
         storedBlocks = new HashMap<>();
     }
 
-    private Map<Location, CloudOre> storedBlocks;
+    private Map<Location, StellarOre> storedBlocks;
 
-    public ReplacedStorage addBlock(Block block, CloudOre ore) {
+    public ReplacedStorage addBlock(Block block, StellarOre ore) {
         storedBlocks.put(block.getLocation(), ore);
         return this;
     }
@@ -30,7 +30,7 @@ public class ReplacedStorage {
 
     public ReplacedStorage clear() {
         storedBlocks.keySet().forEach(location -> {
-            CloudOre ore = storedBlocks.get(location);
+            StellarOre ore = storedBlocks.get(location);
             location.getBlock().setType(ore.getTypeAsMaterial());
         });
         return this;

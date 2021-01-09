@@ -1,4 +1,4 @@
-package net.cloud.mining.files.enums;
+package net.stellar.mining.files.enums;
 
 public enum MiningFileType {
 

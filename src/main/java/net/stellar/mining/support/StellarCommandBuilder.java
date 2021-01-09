@@ -1,6 +1,6 @@
-package net.cloud.mining.support;
+package net.stellar.mining.support;
 
-import net.cloud.mining.CloudMining;
+import net.stellar.mining.StellarMining;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
 import org.bukkit.command.CommandSender;
@@ -10,23 +10,23 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class CloudCommandBuilder extends BukkitCommand implements Cloneable {
+public abstract class StellarCommandBuilder extends BukkitCommand implements Cloneable {
 
-    public CloudCommandBuilder(String name) {
+    public StellarCommandBuilder(String name) {
         super(name);
     }
 
-    public CloudCommandBuilder setCommand(String name) {
+    public StellarCommandBuilder setCommand(String name) {
         setName(name);
         return this;
     }
 
-    public CloudCommandBuilder setCommandDescription(String description) {
+    public StellarCommandBuilder setCommandDescription(String description) {
         setDescription(description);
         return this;
     }
 
-    public CloudCommandBuilder setCommandAliases(List<String> aliases) {
+    public StellarCommandBuilder setCommandAliases(List<String> aliases) {
         setAliases(aliases);
         return this;
     }
@@ -39,7 +39,7 @@ public abstract class CloudCommandBuilder extends BukkitCommand implements Clone
             final Field bukkitCommandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
             bukkitCommandMap.setAccessible(true);
             CommandMap commandMap = (CommandMap) bukkitCommandMap.get(Bukkit.getServer());
-            commandMap.register(getName(), CloudMining.getCore().getDescription().getName(), this);
+            commandMap.register(getName(), StellarMining.getCore().getDescription().getName(), this);
 
             if(!(getAliases().isEmpty() || getAliases() == null)) {
                 List<String> commands = new ArrayList<>(getAliases());
@@ -69,13 +69,13 @@ public abstract class CloudCommandBuilder extends BukkitCommand implements Clone
         return tab;
     }
 
-    public CloudCommandBuilder getClonedCommand() {
+    public StellarCommandBuilder getClonedCommand() {
         try {
-            CloudCommandBuilder builder = (CloudCommandBuilder) this.clone();
-            return (CloudCommandBuilder) this.clone();
+            StellarCommandBuilder builder = (StellarCommandBuilder) this.clone();
+            return (StellarCommandBuilder) this.clone();
         } catch(Exception e) {
             e.printStackTrace();
-            CloudMining.getCore().getLogger().info("An error occured while cloning a command. (" + getName() + ")");
+            StellarMining.getCore().getLogger().info("An error occured while cloning a command. (" + getName() + ")");
         }
         return null;
     }

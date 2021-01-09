@@ -1,9 +1,9 @@
-package net.cloud.mining.files;
+package net.stellar.mining.files;
 
 import java.io.File;
 import java.io.IOException;
 
-import net.cloud.mining.CloudMining;
+import net.stellar.mining.StellarMining;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -21,7 +21,7 @@ public class FileManager {
 	public boolean createConfig(File configFile, String folder, String file) {
 		try {
 			if(!(configFile.exists())) {
-				CloudMining.getCore().saveResource(folder + "/" + file + ".yml", false);
+				StellarMining.getCore().saveResource(folder + "/" + file + ".yml", false);
 
 				return true;
 			}
@@ -36,7 +36,7 @@ public class FileManager {
 	public boolean createConfig(File configFile, String file) {
 		try {
 			if(!(configFile.exists())) {
-				CloudMining.getCore().saveResource(file + ".yml", false);
+				StellarMining.getCore().saveResource(file + ".yml", false);
 
 				return true;
 			}
@@ -49,34 +49,34 @@ public class FileManager {
 	}
 
 	public File getFile(String folder, String file) {
-		File configFile = new File(CloudMining.getCore().getDataFolder() + File.separator + folder, file + ".yml");
+		File configFile = new File(StellarMining.getCore().getDataFolder() + File.separator + folder, file + ".yml");
 
 		if(!(configFile.exists())) {
-			CloudMining.getCore().saveResource(folder + "/" + file + ".yml", false);
+			StellarMining.getCore().saveResource(folder + "/" + file + ".yml", false);
 		}
 
 		return configFile;
 	}
 
 	public File getFile(String file) {
-		File configFile = new File(CloudMining.getCore().getDataFolder(), file + ".yml");
+		File configFile = new File(StellarMining.getCore().getDataFolder(), file + ".yml");
 
 		if(!(configFile.exists())) {
-			CloudMining.getCore().saveResource(file + ".yml", false);
+			StellarMining.getCore().saveResource(file + ".yml", false);
 		}
 
 		return configFile;
 	}
 
 	public FileConfiguration getConfig(String folder, String file) {
-		File configFile = new File(CloudMining.getCore().getDataFolder() + File.separator + folder, file + ".yml");
+		File configFile = new File(StellarMining.getCore().getDataFolder() + File.separator + folder, file + ".yml");
 		FileConfiguration configs = YamlConfiguration.loadConfiguration(configFile);
 
 		return configs;
 	}
 
 	public FileConfiguration getConfig(String file) {
-		File configFile = new File(CloudMining.getCore().getDataFolder(), file + ".yml");
+		File configFile = new File(StellarMining.getCore().getDataFolder(), file + ".yml");
 		FileConfiguration configs = YamlConfiguration.loadConfiguration(configFile);
 
 		return configs;

@@ -2,10 +2,10 @@ Loading-Settings:
     Debug-Mode: true
 
 Command-Settings:
-    Command-Permission: "cloudmining.admin" #Command usage permission
-    Command: "cloudmining" #Main command to use
+    Command-Permission: "stellarmining.admin" #Command usage permission
+    Command: "stellarmining" #Main command to use
     Aliases: #Other possible commands to use
-        - "cloudminings"
+        - "stellarminings"
         - "mining"
         - "minings"
-        - "cm"
+        - "sm"

@@ -28,7 +28,7 @@
 #  - FLAME
 #  - LAVA
 #  - FOOTSTEP
-#  - CLOUD
+#  - Stellar
 #  - REDDUST
 #  - SNOWBALLPOOF
 #  - SNOWSHOVEL
@@ -54,7 +54,7 @@ Blocks:
                 Value: "lava;1;1;1;1;50"
         Permission-Settings:
             Permission-Required: true #Enable / Disable permission
-            Permission-Value: "cloudmining.diamondore" #Permission required to break block
+            Permission-Value: "stellarmining.diamondore" #Permission required to break block
         Region-Settings:
             Regions-Required: true #Requires certain regions -- Will work everywhere without
             Whitelisted-Regions: #Regions that it can be broken in

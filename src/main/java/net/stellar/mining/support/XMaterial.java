@@ -1,4 +1,4 @@
-package net.cloud.mining.support;
+package net.stellar.mining.support;
 
 import java.util.ArrayList;
 import java.util.EnumSet;

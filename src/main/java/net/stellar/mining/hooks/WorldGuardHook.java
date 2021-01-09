@@ -1,13 +1,13 @@
-package net.cloud.mining.hooks;
+package net.stellar.mining.hooks;
 
 import com.sk89q.worldguard.bukkit.RegionContainer;
 import com.sk89q.worldguard.bukkit.RegionQuery;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
-import net.cloud.mining.CloudMining;
-import net.cloud.mining.api.CloudMiningAPI;
-import net.cloud.mining.storage.CloudOre;
+import net.stellar.mining.StellarMining;
+import net.stellar.mining.api.StellarMiningAPI;
+import net.stellar.mining.storage.StellarOre;
 import org.bukkit.block.Block;
 
 import java.util.ArrayList;
@@ -16,10 +16,10 @@ import java.util.List;
 
 public class WorldGuardHook {
 
-    public CloudMining plugin;
+    public StellarMining plugin;
     private boolean enabled;
 
-    public WorldGuardHook(CloudMining plugin) {
+    public WorldGuardHook(StellarMining plugin) {
         this.plugin = plugin;
     }
 
@@ -51,10 +51,10 @@ public class WorldGuardHook {
 
         if(isEnabled()) regions = getRegionsInArea(block);
 
-        Iterator<CloudOre> ores = CloudMiningAPI.getAPI().getOres();
+        Iterator<StellarOre> ores = StellarMiningAPI.getAPI().getOres();
 
         while(ores.hasNext()) {
-            CloudOre ore = ores.next();
+            StellarOre ore = ores.next();
             if(ore.getTypeAsMaterial().equals(block.getType())) {
                 if(!(isEnabled())) return true;
                 if(!(ore.isRegionsEnabled())) return true;
@@ -71,15 +71,15 @@ public class WorldGuardHook {
         return false;
     }
 
-    public CloudOre getOreBreakable(Block block) {
+    public StellarOre getOreBreakable(Block block) {
         List<String> regions = new ArrayList<>();
 
         if(isEnabled()) regions = getRegionsInArea(block);
 
-        Iterator<CloudOre> ores = CloudMiningAPI.getAPI().getOres();
+        Iterator<StellarOre> ores = StellarMiningAPI.getAPI().getOres();
 
         while(ores.hasNext()) {
-            CloudOre ore = ores.next();
+            StellarOre ore = ores.next();
             if(ore.getTypeAsMaterial().equals(block.getType())) {
                 if(!(isEnabled())) return ore;
                 if(!(ore.isRegionsEnabled())) return ore;

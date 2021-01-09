@@ -1,4 +1,4 @@
-package net.cloud.mining.support.particles;
+package net.stellar.mining.support.particles;
 
 
 import java.lang.reflect.Constructor;

@@ -1,4 +1,4 @@
-package net.cloud.mining.utils;
+package net.stellar.mining.utils;
 
 import java.util.NavigableMap;
 import java.util.Random;

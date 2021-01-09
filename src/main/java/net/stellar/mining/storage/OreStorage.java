@@ -1,6 +1,6 @@
-package net.cloud.mining.storage;
+package net.stellar.mining.storage;
 
-import net.cloud.mining.CloudMining;
+import net.stellar.mining.StellarMining;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,21 +8,21 @@ import java.util.Map;
 
 public class OreStorage {
 
-    private CloudMining plugin;
+    private StellarMining plugin;
 
-    public OreStorage(CloudMining plugin) {
+    public OreStorage(StellarMining plugin) {
         this.plugin = plugin;
         ores = new HashMap<>();
     }
 
-    private Map<String, CloudOre> ores;
+    private Map<String, StellarOre> ores;
 
-    public OreStorage addOre(CloudOre ore) {
+    public OreStorage addOre(StellarOre ore) {
         ores.put(ore.getName(), ore);
         return this;
     }
 
-    public OreStorage removeOre(CloudOre ore) {
+    public OreStorage removeOre(StellarOre ore) {
         if(containsOre(ore)) {
             ores.remove(ore.getName());
         }
@@ -36,7 +36,7 @@ public class OreStorage {
         return this;
     }
 
-    public boolean containsOre(CloudOre ore) {
+    public boolean containsOre(StellarOre ore) {
         if(ores.containsKey(ore.getName())) {
             return true;
         }
@@ -54,11 +54,11 @@ public class OreStorage {
         return ores.keySet().iterator();
     }
 
-    public Iterator<CloudOre> getOres() {
+    public Iterator<StellarOre> getOres() {
         return ores.values().iterator();
     }
 
-    public Map<String, CloudOre> getMap() {
+    public Map<String, StellarOre> getMap() {
         return ores;
     }
 }

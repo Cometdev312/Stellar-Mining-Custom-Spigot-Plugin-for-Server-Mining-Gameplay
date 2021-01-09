@@ -45,7 +45,7 @@ COMMAND-HELP-MESSAGE:
     Message:
         Enabled: true
         Value:
-            - "&6&lCloud &e&lMining &8(&7v1.0&8)"
+            - "&6&lStellar &e&lMining &8(&7v1.0&8)"
             - "&7&oA custom mining plugin by Chubbyduck1"
             - " "
             - "&6&lCommands"
