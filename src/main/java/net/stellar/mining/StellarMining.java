@@ -4,6 +4,7 @@ import net.stellar.mining.commands.MiningCommand;
 import net.stellar.mining.events.StellarMiningListener;
 import net.stellar.mining.files.FileUtils;
 import net.stellar.mining.files.enums.MiningFileType;
+import net.stellar.mining.hooks.WorldEditHook;
 import net.stellar.mining.hooks.WorldGuardHook;
 import net.stellar.mining.storage.StellarOre;
 import net.stellar.mining.storage.OreStorage;
@@ -37,6 +38,7 @@ public final class StellarMining extends JavaPlugin {
         oreStorage = new OreStorage(this);
         replacedStorage = new ReplacedStorage(this);
         worldGuardHook = new WorldGuardHook(this).setEnabled(getServer().getPluginManager().isPluginEnabled("WorldGuard") ? true : false);
+        worldEditHook = new WorldEditHook(this).setEnabled(getServer().getPluginManager().isPluginEnabled("WorldEdit") ? true : false);
 
         /*
         Load Ores
@@ -61,6 +63,11 @@ public final class StellarMining extends JavaPlugin {
          */
 
         getReplacedStorage().clear();
+        worldEditHook = null;
+        worldGuardHook = null;
+        replacedStorage = null;
+        oreStorage = null;
+        utils = null;
 
         /*
         Nullify Core
@@ -87,6 +94,7 @@ public final class StellarMining extends JavaPlugin {
     private OreStorage oreStorage;
     private ReplacedStorage replacedStorage;
     private WorldGuardHook worldGuardHook;
+    private WorldEditHook worldEditHook;
 
     public Utils getUtils() {
         return utils;
@@ -99,6 +107,9 @@ public final class StellarMining extends JavaPlugin {
     }
     public WorldGuardHook getWorldGuardHook() {
         return worldGuardHook;
+    }
+    public WorldEditHook getWorldEditHook() {
+        return worldEditHook;
     }
 
     private static StellarMining core;

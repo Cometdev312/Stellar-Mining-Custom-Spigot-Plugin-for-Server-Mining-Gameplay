@@ -1,7 +1,6 @@
 package net.stellar.mining.utils;
 
 import net.stellar.mining.StellarMining;
-import net.stellar.mining.StellarMining;
 import net.stellar.mining.files.FileUtils;
 import net.stellar.mining.files.enums.MiningFileType;
 import net.stellar.mining.storage.StellarOre;
@@ -68,16 +67,6 @@ public class Utils {
     }
 
     public void breakBlock(Player player, Block block, StellarOre ore) {
-        StellarMining.getCore().getReplacedStorage().addBlock(block, ore); //Add Block To Storage
-        StellarMining.getCore().getServer().getScheduler().scheduleSyncDelayedTask(StellarMining.getCore(), new Runnable() { //Change Block Back
-            @Override
-            public void run() {
-                block.setType(ore.getTypeAsMaterial());
-                StellarMining.getCore().getReplacedStorage().removeBlock(block);
-            }
-        }, ore.getDelay());
-        block.setType(Material.BEDROCK); //Set Block to Bedrock
-
         StellarReward reward = ore.getRandomReward();
         if(reward == null) return;
 
@@ -88,6 +77,17 @@ public class Utils {
 
         sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Player-Message", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
         broadcastMessage(FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Broadcast-Message", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
+
+        StellarMining.getCore().getWorldEditHook().setBlockFast(block, Material.BEDROCK);
+
+        StellarMining.getCore().getReplacedStorage().addBlock(block, ore); //Add Block To Storage
+        StellarMining.getCore().getServer().getScheduler().scheduleSyncDelayedTask(StellarMining.getCore(), new Runnable() { //Change Block Back
+            @Override
+            public void run() {
+                StellarMining.getCore().getWorldEditHook().setBlockFast(block, ore.getTypeAsMaterial());
+                StellarMining.getCore().getReplacedStorage().removeBlock(block);
+            }
+        }, ore.getDelay());
     }
 
     public void playParticle(Location location, FileConfiguration config, String path) {
@@ -126,5 +126,9 @@ public class Utils {
         } catch(Exception e) {
             return false;
         }
+    }
+
+    public void setBlockFast(Block block, Material type) {
+
     }
 }
