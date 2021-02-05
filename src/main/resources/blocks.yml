@@ -69,6 +69,14 @@ Blocks:
                     Enabled: true
                     Value:
                         - "&4&l[!] &cYou dont have permission to mine this ore."
+            "No-Reward": #Message sent if player doesnt have permission for the block
+                Sound:
+                    Enabled: true
+                    Value: "ENTITY_BAT_TAKEOFF"
+                Message:
+                    Enabled: true
+                    Value:
+                        - "&4&l[!] &cYou did not receive a reward from this block."
         Chance-Settings:
             Nothing-Chance-Enabled: false #Enables chance to get nothing
             Nothing-Chance-Value: 99 #Chance to get nothing

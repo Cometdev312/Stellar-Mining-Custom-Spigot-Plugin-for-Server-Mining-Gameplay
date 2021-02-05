@@ -194,10 +194,12 @@ public class StellarOre {
             rewards.add(getNothingChance(), null);
         }
 
-        config.getConfigurationSection(getPath() + "Reward-Settings").getKeys(false).forEach(reward -> {
-            StellarReward StellarReward = new StellarReward(getName(), reward).load();
-            if(StellarReward.isRewardEnabled()) rewards.add(StellarReward.getChance(), StellarReward);
-        });
+        if(config.isConfigurationSection(getPath() + "Reward-Settings")) {
+            config.getConfigurationSection(getPath() + "Reward-Settings").getKeys(false).forEach(reward -> {
+                StellarReward StellarReward = new StellarReward(getName(), reward).load();
+                if (StellarReward.isRewardEnabled()) rewards.add(StellarReward.getChance(), StellarReward);
+            });
+        }
 
         return rewards;
     }

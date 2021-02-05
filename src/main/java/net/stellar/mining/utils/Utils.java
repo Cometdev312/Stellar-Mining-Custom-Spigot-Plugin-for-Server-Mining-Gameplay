@@ -68,15 +68,17 @@ public class Utils {
 
     public void breakBlock(Player player, Block block, StellarOre ore) {
         StellarReward reward = ore.getRandomReward();
-        if(reward == null) return;
+        if(!(reward == null)) {
+            List<String> commands = FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS).getStringList(reward.getPath() + "Commands");
+            for (String command : commands) {
+                Bukkit.dispatchCommand(StellarMining.getCore().getConsole(), command.replace("%player%", player.getName()));
+            }
 
-        List<String> commands = FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS).getStringList(reward.getPath() + "Commands");
-        for(String command : commands) {
-            Bukkit.dispatchCommand(StellarMining.getCore().getConsole(), command.replace("%player%", player.getName()));
+            sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Player-Message", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
+            broadcastMessage(FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Broadcast-Message", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
+        } else {
+            sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), ore.getPath() + "Message-Settings.No-Reward", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
         }
-
-        sendMessage(player, FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Player-Message", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
-        broadcastMessage(FileUtils.getInstance().getFileByType(MiningFileType.BLOCKS), reward.getPath() + "Message-Settings.Broadcast-Message", new StellarPlaceholder().addPlaceholder("%player%", player.getName()));
 
         StellarMining.getCore().getWorldEditHook().setBlockFast(block, Material.BEDROCK);
 
