@@ -10,3 +10,6 @@ When downloading, you automatically agree to the following.
 # :briefcase: Dependencies
 1. Spigot [1.8 - 1.12] [Depend]
 2. WorldGuard [Soft Depend]
+
+
+```if you have any some question with this project, feel free to reach out```
